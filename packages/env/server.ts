@@ -30,6 +30,13 @@ function createServerEnv() {
 			RESEND_API_KEY: z.string().optional(),
 			RESEND_FROM_DOMAIN: z.string().optional(),
 
+			// Optional: SMTP configuration (as an alternative to Resend)
+			SMTP_HOST: z.string().optional(),
+			SMTP_PORT: z.string().optional(),
+			SMTP_USER: z.string().optional(),
+			SMTP_PASSWORD: z.string().optional(),
+			SMTP_FROM: z.string().optional(),
+
 			/// S3 configuration
 			// Though they are prefixed with `CAP_AWS`, these don't have to be
 			// for AWS, and can instead be for any S3-compatible service

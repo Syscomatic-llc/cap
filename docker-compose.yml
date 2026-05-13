@@ -4,6 +4,10 @@ services:
   cap-web:
     container_name: cap-web
     image: ghcr.io/capsoftware/cap-web:latest
+    # Uncomment the lines below to build from source (needed for SMTP support)
+    # build:
+    #   context: .
+    #   dockerfile: apps/web/Dockerfile
     restart: unless-stopped
     depends_on:
       mysql:
@@ -26,6 +30,11 @@ services:
       S3_PATH_STYLE: "true"
       RESEND_API_KEY: ${RESEND_API_KEY:-}
       RESEND_FROM_DOMAIN: ${RESEND_FROM_DOMAIN:-}
+      SMTP_HOST: ${SMTP_HOST:-}
+      SMTP_PORT: ${SMTP_PORT:-}
+      SMTP_USER: ${SMTP_USER:-}
+      SMTP_PASSWORD: ${SMTP_PASSWORD:-}
+      SMTP_FROM: ${SMTP_FROM:-}
       MEDIA_SERVER_URL: http://media-server:3456
       MEDIA_SERVER_WEBHOOK_URL: http://cap-web:3000
     ports:
